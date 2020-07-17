@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //variables
-    public float speed = 5.0f;
+
+    //Mesmo com  atributo privado, mostra-lo no inspector
+    [SerializeField]
+    private float speed = 5.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +21,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player_movement();
+    }
+
+    private void player_movement()
+    {
+        
         //Debugs
         Debug.Log("X pos: " + transform.position.x + ", Y pos: " + transform.position.y);
         //Debug.Log("Y pos: " + transform.position.y);
-
+        
         //Move player to left and right
         float horizontalInput = Input.GetAxis("Horizontal");
         //new Vector3(1,0,0) * 1(TD) * inputUser(1 or -1) * speed
