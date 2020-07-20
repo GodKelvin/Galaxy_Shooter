@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //Laser of player (adicionado manualmente atraves do Prefab)
+    public GameObject laserPrefab;
 
     //Mesmo com  atributo privado, mostra-lo no inspector
     [SerializeField]
@@ -22,6 +24,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         player_movement();
+
+        //
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            //Instanciando o laser acima da posicao do jogador (eixo Y), na rotacao padrao (Quaternion)
+            Instantiate(laserPrefab,transform.position + new Vector3(0, 1.07f, 0), Quaternion.identity);
+        }
     }
 
     private void player_movement()
