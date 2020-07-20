@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player_movement();
+        Player_movement();
                                           //Left click mouse(0)
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
         {
