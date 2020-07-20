@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    public float speed = 10.0f;
+    [SerializeField]
+    private float _speed = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +17,12 @@ public class Laser : MonoBehaviour
     {
         //Posicao do objeto associado ao script
         //Movendo-o para cima numa velocidade X * o tempo
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * _speed * Time.deltaTime);
 
         //Quando o laser sai de cena, destruimos o objeto
         if(transform.position.y >= 6)
         {
-            //Destroy(this.gameObject)
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

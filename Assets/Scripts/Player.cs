@@ -6,12 +6,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //Laser of player (adicionado manualmente atraves do Prefab)
-    public GameObject laserPrefab;
-
     //Mesmo com  atributo privado, mostra-lo no inspector
     [SerializeField]
-    private float speed = 5.0f;
+    private float _speed = 5.0f;
+
+    //Laser of player (adicionado manualmente atraves do Prefab)
+    [SerializeField]
+    private GameObject _laserPrefab = null;
+
+    //Variaveis de controle de tiro
+    [SerializeField]
+    private float _fireRate = 0.25f;
+    private float _canFire = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,31 +31,45 @@ public class Player : MonoBehaviour
     void Update()
     {
         player_movement();
+                                          //Left click mouse(0)
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
+        {
+            Shoot();
+        }
+       
+    }
 
-        //
-        if(Input.GetKeyDown(KeyCode.Space))
+    //----------Metodos do Player----------//
+    private void Shoot()
+    {
+        if(Time.time > _canFire)
         {
             //Instanciando o laser acima da posicao do jogador (eixo Y), na rotacao padrao (Quaternion)
-            Instantiate(laserPrefab,transform.position + new Vector3(0, 1.07f, 0), Quaternion.identity);
+            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.07f, 0), Quaternion.identity);
+
+            //Faco o player esperar o tempo delimitado para o proximo tiro
+            //Time.time contem o tempo em segundos da execucao do jogo
+            _canFire = Time.time + _fireRate;
+            //Debug.Log(Time.time + ", "+ canFire);
         }
     }
 
-    private void player_movement()
+    private void Player_movement()
     {
         
         //Debugs
-        Debug.Log("X pos: " + transform.position.x + ", Y pos: " + transform.position.y);
+        //Debug.Log("X pos: " + transform.position.x + ", Y pos: " + transform.position.y);
         //Debug.Log("Y pos: " + transform.position.y);
         
         //Move player to left and right
         float horizontalInput = Input.GetAxis("Horizontal");
         //new Vector3(1,0,0) * 1(TD) * inputUser(1 or -1) * speed
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * _speed);
 
         //Move player to up and down
         float verticalInput = Input.GetAxis("Vertical");
         //new Vector3(0,1,0) * 1(TD) * inputUser(1 or -1) * speed
-        transform.Translate(Vector3.up * Time.deltaTime * verticalInput * speed);
+        transform.Translate(Vector3.up * Time.deltaTime * verticalInput * _speed);
 
         //Delimite space to moving player
         float max_x_range = 8.08f;
