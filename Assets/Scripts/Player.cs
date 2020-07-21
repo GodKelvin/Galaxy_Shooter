@@ -13,11 +13,15 @@ public class Player : MonoBehaviour
     //Laser of player (adicionado manualmente atraves do Prefab)
     [SerializeField]
     private GameObject _laserPrefab = null;
+    [SerializeField]
+    private GameObject _tripleShotPrefab = null;
 
     //Variaveis de controle de tiro
     [SerializeField]
     private float _fireRate = 0.25f;
     private float _canFire = 0.0f;
+
+    public bool canTripleShot = false;
 
 
     // Start is called before the first frame update
@@ -44,8 +48,26 @@ public class Player : MonoBehaviour
     {
         if(Time.time > _canFire)
         {
-            //Instanciando o laser acima da posicao do jogador (eixo Y), na rotacao padrao (Quaternion)
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.07f, 0), Quaternion.identity);
+            if(canTripleShot)
+            {
+                /*
+                //center
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.07f, 0), Quaternion.identity);
+                //left
+                Instantiate(_laserPrefab, transform.position + new Vector3(-0.78f, -0.226f, 0), Quaternion.identity);
+                //right
+                Instantiate(_laserPrefab, transform.position + new Vector3(0.78f, -0.226f, 0), Quaternion.identity);
+                */
+                Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+
+            }
+            else
+            {
+                //Instanciando o laser acima da posicao do jogador (eixo Y), na rotacao padrao (Quaternion)
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.07f, 0), Quaternion.identity);
+
+              
+            }
 
             //Faco o player esperar o tempo delimitado para o proximo tiro
             //Time.time contem o tempo em segundos da execucao do jogo
