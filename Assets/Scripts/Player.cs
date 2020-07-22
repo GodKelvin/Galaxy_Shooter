@@ -21,7 +21,11 @@ public class Player : MonoBehaviour
     private float _fireRate = 0.25f;
     private float _canFire = 0.0f;
 
+    //PowerUps Controller Variables
     public bool canTripleShot = false;
+    //public bool speedBoost = false;
+    [SerializeField]
+    private float _moreSpeed = 1.0f;
 
 
     // Start is called before the first frame update
@@ -85,13 +89,13 @@ public class Player : MonoBehaviour
         
         //Move player to left and right
         float horizontalInput = Input.GetAxis("Horizontal");
-        //new Vector3(1,0,0) * 1(TD) * inputUser(1 or -1) * speed
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * _speed);
+        //new Vector3(1,0,0) * 1(TD) * inputUser(1 or -1) * speed * _moreSpeed (if PowerUpOn(Boost))
+        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * _speed * _moreSpeed);
 
         //Move player to up and down
         float verticalInput = Input.GetAxis("Vertical");
-        //new Vector3(0,1,0) * 1(TD) * inputUser(1 or -1) * speed
-        transform.Translate(Vector3.up * Time.deltaTime * verticalInput * _speed);
+        //new Vector3(0,1,0) * 1(TD) * inputUser(1 or -1) * speed * _moreSpeed (if PowerUpOn(Boost))
+        transform.Translate(Vector3.up * Time.deltaTime * verticalInput * _speed * _moreSpeed);
 
         //Delimite space to moving player
         float max_x_range = 8.08f;
@@ -118,16 +122,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Habilita o triple shot
     public void TripleShotPowerUpOn()
     {
         canTripleShot = true;
         StartCoroutine(TripleShotPowerDownRoutine());
     }
 
-    //O triple shot estara disponivel por 5s
+    //O triple shot estara disponivel por Xs
     public IEnumerator TripleShotPowerDownRoutine()
     {
         yield return new WaitForSeconds(5.0f);
         canTripleShot = false;
+    }
+
+    //habilita o speedBoost
+    public void SpeedBoostPowerUpOn()
+    {
+        _moreSpeed = 2.5f;
+        StartCoroutine(SpeedBoostDownRoutine());
+    }
+
+    //Volta a velocidade normal depois de Xs
+    public IEnumerator SpeedBoostDownRoutine()
+    {
+        yield return new WaitForSeconds(8.0f);
+        _moreSpeed = 1.0f;
     }
 }
