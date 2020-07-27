@@ -420,6 +420,7 @@ MonoBehaviour:
   _fireRate: 0.25
   canTripleShot: 0
   _moreSpeed: 1
+  _life: 3
 --- !u!212 &524380307
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -478,7 +479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524380305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.74, z: 0}
+  m_LocalPosition: {x: 0, y: -3.05, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -576,7 +577,7 @@ PrefabInstance:
     - target: {fileID: 3824507540915486993, guid: cbe8a0400571d474fa23c140ceba2b7b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3824507540915486993, guid: cbe8a0400571d474fa23c140ceba2b7b,
         type: 3}
@@ -597,11 +598,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4426585017874930986, guid: cbe8a0400571d474fa23c140ceba2b7b,
-        type: 3}
-      propertyPath: _speed
-      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbe8a0400571d474fa23c140ceba2b7b, type: 3}
@@ -655,7 +651,7 @@ PrefabInstance:
     - target: {fileID: 4147052820327839426, guid: df060f84bd78cd248932001abad432f1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4147052820327839426, guid: df060f84bd78cd248932001abad432f1,
         type: 3}
@@ -724,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 7048961143677919078, guid: fcf8fc00f048b3146a927a863df104cd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7048961143677919078, guid: fcf8fc00f048b3146a927a863df104cd,
         type: 3}
