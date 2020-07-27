@@ -27,12 +27,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _moreSpeed = 1.0f;
 
+    [SerializeField]
+    private int _life = 3;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("X pos: " + transform.position.x);
-        transform.position = new Vector3(0, 0, 0);
+        PlayerSpawn();
     }
 
     // Update is called once per frame
@@ -48,6 +50,11 @@ public class Player : MonoBehaviour
     }
 
     //----------Metodos do Player----------//
+    public void PlayerSpawn()
+    {
+        //Debug.Log("X pos: " + transform.position.x);
+        transform.position = new Vector3(0, -3, 0);
+    }
     private void Shoot()
     {
         if(Time.time > _canFire)
@@ -148,5 +155,15 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(8.0f);
         _moreSpeed = 1.0f;
+    }
+
+    public int GetLife()
+    {
+        return _life;
+    }
+
+    public void LoseOneLife()
+    {
+        _life -= 1;
     }
 }
