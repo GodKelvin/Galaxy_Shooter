@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3046522810843513053}
   m_Layer: 0
   m_Name: Triple Shot
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 8615237975178932318}
   m_Layer: 0
   m_Name: Left_Laser
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 3173365840317544116}
   m_Layer: 0
   m_Name: Right_Laser
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 5703065442774131721}
   m_Layer: 0
   m_Name: Center_Laser
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

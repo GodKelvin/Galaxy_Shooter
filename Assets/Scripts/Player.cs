@@ -157,6 +157,7 @@ public class Player : MonoBehaviour
         _moreSpeed = 1.0f;
     }
 
+    /*
     public int GetLife()
     {
         return _life;
@@ -165,5 +166,16 @@ public class Player : MonoBehaviour
     public void LoseOneLife()
     {
         _life -= 1;
+    }
+    */
+    public void Damage()
+    {
+        _life--;
+        //PlayerSpawn();
+        
+        if(_life < 1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

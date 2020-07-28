@@ -38,16 +38,18 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        /*
+        
         if(other.tag == "Laser")
         {
             Destroy(this.gameObject);
-        }*/
-        if(other.tag == "Player")
+            Destroy(other.gameObject);
+        }
+        else if(other.tag == "Player")
         {
             Player player = other.GetComponent<Player>();
             if(player != null)
             {
+                /*
                 if(player.GetLife() > 0)
                 {
                     player.LoseOneLife();
@@ -57,9 +59,13 @@ public class EnemyAI : MonoBehaviour
                 {
                     Destroy(other.gameObject);
                 }
+                */
+                player.Damage();
+                
             }
+            Destroy(this.gameObject);
         }
         //Independente da colisao,  sou destruido
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 }
