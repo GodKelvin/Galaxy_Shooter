@@ -6,11 +6,14 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 2.0f;
+
+    public Animator anim;
     
     // Start is called before the first frame update
     void Start()
     {
         EnemySpawn();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,9 @@ public class EnemyAI : MonoBehaviour
         
         if(other.tag == "Laser")
         {
+            //gameObject.GetComponent<Animation>().Play("Enemy_Explosion");
+            //anim.SetTrigger("Enemy_Explosion");
+            anim.Play("Enemy_Explosion");
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }
