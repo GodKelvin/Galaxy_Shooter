@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _life = 3;
 
+    [SerializeField]
+    private GameObject _explosionPrefab = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -175,6 +178,7 @@ public class Player : MonoBehaviour
         
         if(_life < 1)
         {
+            Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
