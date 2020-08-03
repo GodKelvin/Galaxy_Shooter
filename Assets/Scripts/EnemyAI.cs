@@ -7,13 +7,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float _speed = 2.0f;
 
-    public Animator anim;
-    
+    //public Animator anim;
+    [SerializeField]
+    private GameObject _enemyExplosionPrefab = null;
+
     // Start is called before the first frame update
     void Start()
     {
         EnemySpawn();
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,11 +45,13 @@ public class EnemyAI : MonoBehaviour
         
         if(other.tag == "Laser")
         {
-            //gameObject.GetComponent<Animation>().Play("Enemy_Explosion");
-            //anim.SetTrigger("Enemy_Explosion");
-            anim.Play("Enemy_Explosion");
-            Destroy(this.gameObject);
             Destroy(other.gameObject);
+            //Instanciando a explosao no mesmo lugar que o inimigo foi atingido, na rotacao padrao (Quaternion)
+            Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
+            _enemyExplosionPrefab.transform.Translate(Vector3.down * Time.deltaTime * _speed);
+            Destroy(this.gameObject);
+            
+            
         }
         else if(other.tag == "Player")
         {
@@ -69,6 +72,7 @@ public class EnemyAI : MonoBehaviour
                 player.Damage();
                 
             }
+            Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
         //Independente da colisao,  sou destruido

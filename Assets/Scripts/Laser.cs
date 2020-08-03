@@ -22,6 +22,7 @@ public class Laser : MonoBehaviour
         //Quando o laser sai de cena, destruimos o objeto
         if(transform.position.y >= 6)
         {
+            //Triple Shots, for example
             if(transform.parent != null)
             {
                 Destroy(transform.parent.gameObject);
