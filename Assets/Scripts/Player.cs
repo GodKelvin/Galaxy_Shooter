@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _shieldEnabled = false;
 
+    [SerializeField]
+    private GameObject _shieldGameObject = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -168,6 +171,8 @@ public class Player : MonoBehaviour
         if(_shieldEnabled)
         {
             _shieldEnabled = false;
+            //desabilita o gameObject
+            _shieldGameObject.SetActive(false);
             return;
         }
     
@@ -185,5 +190,7 @@ public class Player : MonoBehaviour
     public void ShieldPowerUpOn()
     {
         _shieldEnabled = true;
+        //habilitar o gameObject
+        _shieldGameObject.SetActive(true);
     }
 }
