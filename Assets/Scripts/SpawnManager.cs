@@ -10,18 +10,22 @@ public class SpawnManager : MonoBehaviour
 
     //Criando um array de GameObjects
     [SerializeField]
-    private GameObject[] _powerUps;
+    private GameObject[] _powerUpsVector = null;
 
     [SerializeField]
-    private float _timeSpawnEnemy = 3;
+    private float _timeSpawnEnemy = 3f;
+
+    [SerializeField]
+    private float _timeSpawnPowerUp = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(EnemySpawn());
+        StartCoroutine(EnemySpawnRoutine());
+        StartCoroutine(PowerUpSpawnRoutine());
     }
 
-    IEnumerator EnemySpawn()
+    IEnumerator EnemySpawnRoutine()
     {
         while(true)
         {
@@ -31,5 +35,13 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-
+    IEnumerator PowerUpSpawnRoutine()
+    {
+        while(true)
+        {
+            int selectPowerUp = Random.Range(0,3);
+            Instantiate(_powerUpsVector[selectPowerUp], transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(_timeSpawnPowerUp);
+        }   
+    }
 }

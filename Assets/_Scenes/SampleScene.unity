@@ -411,8 +411,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 3824507540915486999, guid: cbe8a0400571d474fa23c140ceba2b7b,
     type: 3}
-  _powerUps: []
+  _powerUpsVector:
+  - {fileID: 7048961143677919072, guid: fcf8fc00f048b3146a927a863df104cd, type: 3}
+  - {fileID: 4147052820327839424, guid: df060f84bd78cd248932001abad432f1, type: 3}
+  - {fileID: 8389790657226138451, guid: aa14625f43e0ed947a82e05feb46b9ad, type: 3}
   _timeSpawnEnemy: 1
+  _timeSpawnPowerUp: 3
 --- !u!4 &522047444
 Transform:
   m_ObjectHideFlags: 0
@@ -609,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 7048961143677919078, guid: fcf8fc00f048b3146a927a863df104cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.07
+      value: 3.28
       objectReference: {fileID: 0}
     - target: {fileID: 7048961143677919078, guid: fcf8fc00f048b3146a927a863df104cd,
         type: 3}
@@ -779,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 4147052820327839426, guid: df060f84bd78cd248932001abad432f1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.36
+      value: 5.71
       objectReference: {fileID: 0}
     - target: {fileID: 4147052820327839426, guid: df060f84bd78cd248932001abad432f1,
         type: 3}

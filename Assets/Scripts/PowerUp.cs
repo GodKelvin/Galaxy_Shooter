@@ -10,11 +10,16 @@ public class PowerUp : MonoBehaviour
     [SerializeField]
     private int _powerUpID = -1;//0 == Triple Shot, 1 == Speed Boost, 2 == Shields
    
+   void Start()
+   {
+       PowerUpSpawn();
+   }
+
+
     // Update is called once per frame
     void Update()
     {
-        //Fazendo-o cair em tempo real 3m/s
-        transform.Translate(Vector3.down * Time.deltaTime * _speed);
+        PowerUpMovement();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +51,24 @@ public class PowerUp : MonoBehaviour
             }
             //destroy this powerup
              Destroy(this.gameObject);
+        }
+    }
+
+    private void PowerUpSpawn()
+    {
+        float yPosition = 5.7f;
+        float xPosition = Random.Range(-7.44f, 7.59f);
+        transform.position = new Vector3(xPosition, yPosition, 0);
+       
+    }
+
+    private void PowerUpMovement()
+    {
+        //Fazendo-o cair em tempo real 3m/s
+        transform.Translate(Vector3.down * Time.deltaTime * _speed);
+        if(transform.position.y < -6f)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
