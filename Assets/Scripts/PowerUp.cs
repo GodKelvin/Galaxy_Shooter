@@ -41,10 +41,8 @@ public class PowerUp : MonoBehaviour
                 else if(_powerUpID == 2)
                 {
                     //Enable shield
+                    player.ShieldPowerUpOn();
                 }
-               
-
-                
             }
             //destroy this powerup
              Destroy(this.gameObject);

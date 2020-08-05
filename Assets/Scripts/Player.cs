@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _explosionPrefab = null;
 
+    [SerializeField]
+    private bool _shieldEnabled = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -160,19 +163,14 @@ public class Player : MonoBehaviour
         _moreSpeed = 1.0f;
     }
 
-    /*
-    public int GetLife()
-    {
-        return _life;
-    }
-
-    public void LoseOneLife()
-    {
-        _life -= 1;
-    }
-    */
     public void Damage()
     {
+        if(_shieldEnabled)
+        {
+            _shieldEnabled = false;
+            return;
+        }
+    
         _life--;
         //PlayerSpawn();
         
@@ -181,5 +179,11 @@ public class Player : MonoBehaviour
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+        
+    }
+
+    public void ShieldPowerUpOn()
+    {
+        _shieldEnabled = true;
     }
 }
