@@ -1,32 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Acesso a todos os elementos de UI do editor do unity
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-
+    
     public Sprite[] livesSpritesArray = null;
 
+    //Referenciando o sprite de vidas na tela do jogador
+    public Image livesImageDisplay = null;
 
-    // Start is called before the first frame update
-    void Start()
+    public void UpdateLives(int currentPlayerLives)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateLives()
-    {
-
+        Debug.Log("Player lives: " + currentPlayerLives);
+        livesImageDisplay.sprite = livesSpritesArray[currentPlayerLives];
     }
 
     public void UpdateScore()
     {
-        
+
     }
 }

@@ -39,11 +39,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _shieldGameObject = null;
 
+    private UIManager _uiManager;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerSpawn();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+
+        //_uiManager != null
+        if(_uiManager)
+        {
+            _uiManager.UpdateLives(_life);
+        }
     }
 
     // Update is called once per frame
@@ -177,6 +185,7 @@ public class Player : MonoBehaviour
         }
     
         _life--;
+        _uiManager.UpdateLives(_life);
         //PlayerSpawn();
         
         if(_life < 1)
