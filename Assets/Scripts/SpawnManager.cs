@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     private float _timeSpawnEnemy = 3f;
 
     [SerializeField]
-    private float _timeSpawnPowerUp = 3f;
+    private float _timeSpawnPowerUp = 5f;
 
     // Start is called before the first frame update
     void Start()

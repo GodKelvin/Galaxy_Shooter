@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     private GameObject _shieldGameObject = null;
 
     private UIManager _uiManager;
+    private GameManager _gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         {
             _uiManager.UpdateLives(_life);
         }
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -191,6 +193,8 @@ public class Player : MonoBehaviour
         if(_life < 1)
         {
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            _gameManager.gameOver = true;
+            _uiManager.ShowTitleScreen();
             Destroy(this.gameObject);
         }
         

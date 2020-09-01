@@ -11,9 +11,13 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private GameObject _enemyExplosionPrefab = null;
 
+    private UIManager _uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Encontrando o objeto do canvas para manipularmos
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         EnemySpawn();
     }
 
@@ -49,6 +53,7 @@ public class EnemyAI : MonoBehaviour
             //Instanciando a explosao no mesmo lugar que o inimigo foi atingido, na rotacao padrao (Quaternion)
             Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
             _enemyExplosionPrefab.transform.Translate(Vector3.down * Time.deltaTime * _speed);
+            _uiManager.UpdateScore();
             Destroy(this.gameObject);
             
             
