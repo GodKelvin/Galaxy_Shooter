@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9887aafc0ed9c44a225bc612275b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2.5
+  _speed: 4.5
   _enemyExplosionPrefab: {fileID: 6861523156666158647, guid: 180446baa8dc9f14d983747de0da50e6,
     type: 3}

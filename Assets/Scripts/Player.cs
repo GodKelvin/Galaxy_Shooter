@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     //Mesmo com  atributo privado, mostra-lo no inspector
     [SerializeField]
-    private float _speed = 5.0f;
+    private float _speed = 7.5f;
 
     //Laser of player (adicionado manualmente atraves do Prefab)
     [SerializeField]
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public bool canTripleShot = false;
     //public bool speedBoost = false;
     [SerializeField]
-    private float _moreSpeed = 1.0f;
+    private float _moreSpeed = 1;
 
     [SerializeField]
     private int _life = 3;
@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
     //habilita o speedBoost
     public void SpeedBoostPowerUpOn()
     {
-        _moreSpeed = 2.5f;
+        _moreSpeed = 1.7f;
         StartCoroutine(SpeedBoostDownRoutine());
     }
 

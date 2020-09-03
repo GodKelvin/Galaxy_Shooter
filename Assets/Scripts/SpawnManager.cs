@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     private float _timeSpawnEnemy = 3f;
 
     [SerializeField]
-    private float _timeSpawnPowerUp = 5f;
+    private float _timeSpawnPowerUp = 25f;
 
     //Acessando a variavel gameOver do GameManager
     private GameManager _gameManager;
