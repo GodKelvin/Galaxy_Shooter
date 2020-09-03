@@ -13,13 +13,18 @@ public class EnemyAI : MonoBehaviour
 
     private UIManager _uiManager;
     private GameManager _gameManager;
+
+    private AudioSource _audioSourceExplosion;
+    
     // Start is called before the first frame update
     void Start()
     {
         //Encontrando o objeto do canvas para manipularmos
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _audioSourceExplosion = GetComponent<AudioSource>();
         EnemySpawn();
+        
     }
 
     // Update is called once per frame
@@ -56,17 +61,20 @@ public class EnemyAI : MonoBehaviour
         
         if(other.tag == "Laser")
         {
+            
             Destroy(other.gameObject);
             //Instanciando a explosao no mesmo lugar que o inimigo foi atingido, na rotacao padrao (Quaternion)
             Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
             _enemyExplosionPrefab.transform.Translate(Vector3.down * Time.deltaTime * _speed);
             _uiManager.UpdateScore();
+            //_audioSourceExplosion.Play();
             Destroy(this.gameObject);
             
             
         }
         else if(other.tag == "Player")
         {
+            
             Player player = other.GetComponent<Player>();
             if(player != null)
             {
@@ -85,6 +93,7 @@ public class EnemyAI : MonoBehaviour
                 
             }
             Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
+            //_audioSourceExplosion.Play();
             Destroy(this.gameObject);
         }
         //Independente da colisao,  sou destruido

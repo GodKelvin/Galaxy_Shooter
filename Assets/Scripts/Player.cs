@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     private GameManager _gameManager;
     private SpawnManager _spawnManager;
 
+    private AudioSource _audioSourceShoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +67,9 @@ public class Player : MonoBehaviour
         {
             _spawnManager.StartSpawnRoutines();
         }
+
+        //Ja estou dentro do player, entao so pego a fonte de audio que ele tem
+        _audioSourceShoot = GetComponent<AudioSource>();
 
     }
 
@@ -90,6 +95,7 @@ public class Player : MonoBehaviour
     {
         if(Time.time > _canFire)
         {
+            _audioSourceShoot.Play();
             if(canTripleShot)
             {
                 /*
