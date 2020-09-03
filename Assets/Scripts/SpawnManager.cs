@@ -18,16 +18,27 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float _timeSpawnPowerUp = 5f;
 
+    //Acessando a variavel gameOver do GameManager
+    private GameManager _gameManager;
+
     // Start is called before the first frame update
     void Start()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        StartCoroutine(EnemySpawnRoutine());
+        StartCoroutine(PowerUpSpawnRoutine());
+        
+    }
+
+    //Metodo chamado pelo player quando o jogo eh iniciado
+    public void StartSpawnRoutines()
     {
         StartCoroutine(EnemySpawnRoutine());
         StartCoroutine(PowerUpSpawnRoutine());
     }
-
     IEnumerator EnemySpawnRoutine()
     {
-        while(true)
+        while(!_gameManager.gameOver)
         {
             //Enemy contem uma funcao de spawn aleatoria
             Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
@@ -37,7 +48,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator PowerUpSpawnRoutine()
     {
-        while(true)
+        while(!_gameManager.gameOver)
         {
             int selectPowerUp = Random.Range(0,3);
             Instantiate(_powerUpsVector[selectPowerUp], transform.position, Quaternion.identity);

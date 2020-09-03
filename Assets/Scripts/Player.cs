@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 
     private UIManager _uiManager;
     private GameManager _gameManager;
+    private SpawnManager _spawnManager;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,17 @@ public class Player : MonoBehaviour
             _uiManager.UpdateLives(_life);
         }
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        //Quando o jogo eh iniciado, informo que ja pode dar spawn nos objetos (powerUps, enemys)
+        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+
+
+        //Se nao for nulo
+        if(_spawnManager)
+        {
+            _spawnManager.StartSpawnRoutines();
+        }
+
     }
 
     // Update is called once per frame
