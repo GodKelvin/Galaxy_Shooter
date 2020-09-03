@@ -12,12 +12,13 @@ public class EnemyAI : MonoBehaviour
     private GameObject _enemyExplosionPrefab = null;
 
     private UIManager _uiManager;
-
+    private GameManager _gameManager;
     // Start is called before the first frame update
     void Start()
     {
         //Encontrando o objeto do canvas para manipularmos
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         EnemySpawn();
     }
 
@@ -25,6 +26,12 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         EnemyMovement();
+        if(_gameManager.gameOver)
+        {
+             Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
+            _enemyExplosionPrefab.transform.Translate(Vector3.down * Time.deltaTime * _speed);
+            Destroy(this.gameObject);
+        }
     }
 
     private void EnemySpawn()
