@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _powerUpID: 2
+  _clipSoundPowerUp: {fileID: 8300000, guid: 5ee343246919d2b4bba63ae629e95494, type: 3}
 --- !u!58 &8389790657226138455
 CircleCollider2D:
   m_ObjectHideFlags: 0

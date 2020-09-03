@@ -9,9 +9,15 @@ public class PowerUp : MonoBehaviour
     private float _speed = 3.0f;
     [SerializeField]
     private int _powerUpID = -1;//0 == Triple Shot, 1 == Speed Boost, 2 == Shields
+
+    //private AudioSource _audioSourcePowerUp;
+    //Utilizamos um clip para armazenar o audio, caso contrario, o audio seria destruido com o objeto
+    [SerializeField]
+    private AudioClip _clipSoundPowerUp = null;
    
    void Start()
    {
+       //_audioSourcePowerUp = GetComponent<AudioSource>();
        PowerUpSpawn();
    }
 
@@ -54,6 +60,8 @@ public class PowerUp : MonoBehaviour
                 }
             }
             //destroy this powerup
+            //_audioSourcePowerUp.Play();
+            AudioSource.PlayClipAtPoint(_clipSoundPowerUp, Camera.main.transform.position);
              Destroy(this.gameObject);
         }
     }
