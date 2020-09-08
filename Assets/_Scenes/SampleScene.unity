@@ -710,7 +710,7 @@ MonoBehaviour:
   - {fileID: 4147052820327839424, guid: df060f84bd78cd248932001abad432f1, type: 3}
   - {fileID: 8389790657226138451, guid: aa14625f43e0ed947a82e05feb46b9ad, type: 3}
   _timeSpawnEnemy: 1
-  _timeSpawnPowerUp: 25
+  _timeSpawnPowerUp: 1
 --- !u!4 &522047444
 Transform:
   m_ObjectHideFlags: 0
