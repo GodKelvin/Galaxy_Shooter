@@ -45,6 +45,12 @@ public class Player : MonoBehaviour
 
     private AudioSource _audioSourceShoot;
 
+    [SerializeField]
+    private GameObject[] _engines = null;
+    
+    private bool _leftEngineFail = false;
+    private bool _rightEngineFail = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -203,7 +209,24 @@ public class Player : MonoBehaviour
             _shieldGameObject.SetActive(false);
             return;
         }
-    
+
+        //Ativando animacao de dano
+        int sideFail = Random.Range(1,3);
+        //Randomizando os danos(direito ou esquerdo, dano em cima ou em baixo)
+        if((sideFail == 1 && _leftEngineFail == false) || _rightEngineFail == true)
+        {
+            int engineFail = Random.Range(0,2);
+            _engines[engineFail].SetActive(true);
+            _leftEngineFail = true;
+        }
+        else
+        {
+            int engineFail = Random.Range(2,4);
+            _engines[engineFail].SetActive(true);
+            _rightEngineFail = true;
+        }
+        
+
         _life--;
         _uiManager.UpdateLives(_life);
         //PlayerSpawn();

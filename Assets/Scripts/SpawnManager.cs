@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     private float _timeSpawnPowerUp = 25f;
 
     //Acessando a variavel gameOver do GameManager
-    private GameManager _gameManager;
+    private GameManager _gameManager = null;
 
     // Start is called before the first frame update
     void Start()
