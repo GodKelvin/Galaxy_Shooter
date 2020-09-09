@@ -294,11 +294,22 @@ public class Player : MonoBehaviour
             }
             _firstDamage = -1;
         }
+
+        _life++;
+        _uiManager.UpdateLives(_life);
+
+        /*
         if(_life < 3)
         {
             _life++;
             _uiManager.UpdateLives(_life);
         }
+        */
         
+    }
+
+    public int GetLifes()
+    {
+        return _life;
     }
 }

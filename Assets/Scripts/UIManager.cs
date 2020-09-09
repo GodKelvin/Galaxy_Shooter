@@ -16,10 +16,16 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
     public GameObject titleScreen;
 
-    private int _scoreForLife = 100;
+    private int _scoreForLife = 1000;
     private int _scoreUntilLife = 0;
 
     private Player _player = null;
+
+    [SerializeField]
+    private AudioClip _clipSoundGainLife = null;
+
+    [SerializeField]
+    private AudioClip _clipSoundGainPoints = null;
 
     public void UpdateLives(int currentPlayerLives)
     {
@@ -39,7 +45,18 @@ public class UIManager : MonoBehaviour
             _player = GameObject.Find("Player(Clone)").GetComponent<Player>();
             if(_player)
             {
-                _player.RemoveDamage();
+                if(_player.GetLifes() < 3)
+                {
+                    AudioSource.PlayClipAtPoint(_clipSoundGainLife, Camera.main.transform.position, 1f);
+                    _player.RemoveDamage();
+                }
+                else
+                {
+                    score += 50;
+                    scoreText.text = "SCORE: " + score;
+                    AudioSource.PlayClipAtPoint(_clipSoundGainPoints, Camera.main.transform.position, 1f);
+                }
+               
             }
         }
     }

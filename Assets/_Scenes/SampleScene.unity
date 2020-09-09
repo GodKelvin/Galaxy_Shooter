@@ -399,6 +399,9 @@ MonoBehaviour:
   score: 0
   scoreText: {fileID: 910435803}
   titleScreen: {fileID: 133413117}
+  _clipSoundGainLife: {fileID: 8300000, guid: cf671d34809f1ea489b4af3b6fca5656, type: 3}
+  _clipSoundGainPoints: {fileID: 8300000, guid: 7acca7302ab86c240b04b851af208dfd,
+    type: 3}
 --- !u!1 &493130579
 GameObject:
   m_ObjectHideFlags: 0
