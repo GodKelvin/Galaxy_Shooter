@@ -16,6 +16,11 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
     public GameObject titleScreen;
 
+    private int _scoreForLife = 100;
+    private int _scoreUntilLife = 0;
+
+    private Player _player = null;
+
     public void UpdateLives(int currentPlayerLives)
     {
         Debug.Log("Player lives: " + currentPlayerLives);
@@ -26,6 +31,17 @@ public class UIManager : MonoBehaviour
     {
         score += 10;
         scoreText.text = "SCORE: " + score;
+        _scoreUntilLife += 10;
+
+        if(_scoreUntilLife >= _scoreForLife)
+        {
+            _scoreUntilLife = 0;
+            _player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+            if(_player)
+            {
+                _player.RemoveDamage();
+            }
+        }
     }
 
     public void ShowTitleScreen()

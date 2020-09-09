@@ -51,6 +51,9 @@ public class Player : MonoBehaviour
     private bool _leftEngineFail = false;
     private bool _rightEngineFail = false;
 
+    private int _firstDamage = -1;
+    private int _secondDamage = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -212,18 +215,29 @@ public class Player : MonoBehaviour
 
         //Ativando animacao de dano
         int sideFail = Random.Range(1,3);
+        int engineFail = 0;
         //Randomizando os danos(direito ou esquerdo, dano em cima ou em baixo)
         if((sideFail == 1 && _leftEngineFail == false) || _rightEngineFail == true)
         {
-            int engineFail = Random.Range(0,2);
+            engineFail = Random.Range(0,2);
             _engines[engineFail].SetActive(true);
             _leftEngineFail = true;
+
         }
         else
         {
-            int engineFail = Random.Range(2,4);
+            engineFail = Random.Range(2,4);
             _engines[engineFail].SetActive(true);
             _rightEngineFail = true;
+        }
+
+        if(_firstDamage == -1)
+        {
+            _firstDamage = engineFail;
+        }
+        else
+        {
+            _secondDamage = engineFail;
         }
         
 
@@ -246,5 +260,45 @@ public class Player : MonoBehaviour
         _shieldEnabled = true;
         //habilitar o gameObject
         _shieldGameObject.SetActive(true);
+    }
+
+    public void RemoveDamage()
+    {
+        //Removendo a animacao de dano
+        if(_secondDamage != -1)
+        {
+            _engines[_secondDamage].SetActive(false);
+
+            //Verificando qual lado que foi consertado
+            if(_secondDamage <= 1)
+            {
+                _leftEngineFail = false;
+            }
+            else
+            {
+                _rightEngineFail = false;
+            }
+            _secondDamage = -1;
+
+        }
+        else if(_firstDamage !=  -1)
+        {
+            _engines[_firstDamage].SetActive(false);
+            if(_firstDamage <= 1)
+            {
+                _leftEngineFail = false;
+            }
+            else
+            {
+                _rightEngineFail = false;
+            }
+            _firstDamage = -1;
+        }
+        if(_life < 3)
+        {
+            _life++;
+            _uiManager.UpdateLives(_life);
+        }
+        
     }
 }
