@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
     public GameObject titleScreen;
 
-    private int _scoreForLife = 1000;
+    private int _scoreForLife = 100;
     private int _scoreUntilLife = 0;
 
     private Player _player = null;
@@ -39,10 +39,15 @@ public class UIManager : MonoBehaviour
         scoreText.text = "SCORE: " + score;
         _scoreUntilLife += 10;
 
+
         if(_scoreUntilLife >= _scoreForLife)
         {
             _scoreUntilLife = 0;
             _player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+
+            //Altero a velocidade de todos os inimigos (pela variavel ser static)
+            EnemyAI._speed += 1;
+
             if(_player)
             {
                 if(_player.GetLifes() < 3)
@@ -59,6 +64,7 @@ public class UIManager : MonoBehaviour
                
             }
         }
+
     }
 
     public void ShowTitleScreen()
