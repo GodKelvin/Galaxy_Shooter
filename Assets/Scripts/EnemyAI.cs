@@ -33,12 +33,14 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         EnemyMovement();
+        //Debug.Log("Enemy speed: " + _speed);
         if(_gameManager.gameOver)
         {
              Instantiate(_enemyExplosionPrefab, transform.position, Quaternion.identity);
             _enemyExplosionPrefab.transform.Translate(Vector3.down * Time.deltaTime * _speed);
             Destroy(this.gameObject);
         }
+        
     }
 
     private void EnemySpawn()
