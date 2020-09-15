@@ -1,12 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public bool gameOver = true;
-    public GameObject player;
-    private UIManager _uiManager;
+    //public GameObject player;
+    //private UIManager _uiManager;
     //if game over is true
     //if space key pressed
     //spawn the player
@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        //_uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     void Update()
     {
+        /*
         if(gameOver)
         {
             if(Input.GetKeyDown(KeyCode.Space))
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
                 _uiManager.score = 0;
             }
         }
+        */
     }
     
 }

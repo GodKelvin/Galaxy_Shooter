@@ -27,6 +27,16 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private AudioClip _clipSoundGainPoints = null;
 
+    private int _scoreBonus = 200;
+
+    public GameObject player;
+    private GameManager _gameManager;
+
+    private void Start()
+    {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     public void UpdateLives(int currentPlayerLives)
     {
         //Debug.Log("Player lives: " + currentPlayerLives);
@@ -57,7 +67,7 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    score += 50;
+                    score += _scoreBonus;
                     scoreText.text = "SCORE: " + score;
                     AudioSource.PlayClipAtPoint(_clipSoundGainPoints, Camera.main.transform.position, 1f);
                 }
@@ -76,5 +86,28 @@ public class UIManager : MonoBehaviour
     {
         titleScreen.SetActive(false);
         scoreText.text = "SCORE: 0";
+    }
+
+    public void QuitGame()
+    {
+        //Editor Unity
+        if(UnityEditor.EditorApplication.isPlaying)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+        else
+        {
+            //Jogo compilado
+             Application.Quit();
+        }
+    }
+
+    public void StartGame()
+    {
+        Instantiate(player, Vector3.zero, Quaternion.identity);
+        HideTitleScreen();
+        _gameManager.gameOver = false;
+        score = 0;
+        _scoreUntilLife = 0;
     }
 }
