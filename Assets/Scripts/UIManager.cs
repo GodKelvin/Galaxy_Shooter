@@ -110,4 +110,6 @@ public class UIManager : MonoBehaviour
         score = 0;
         _scoreUntilLife = 0;
     }
+
+    
 }
