@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
     public GameObject player;
     private GameManager _gameManager;
 
+    public GameObject optionsPanel;
+
     private void Start()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -111,5 +113,13 @@ public class UIManager : MonoBehaviour
         _scoreUntilLife = 0;
     }
 
+    public void ShowHowToPlay()
+    {
+        optionsPanel.SetActive(true);
+    }
     
+    public void CloseHowToPlay()
+    {
+        optionsPanel.SetActive(false);
+    }
 }
