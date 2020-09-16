@@ -93,15 +93,12 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         //Editor Unity
-        if(UnityEditor.EditorApplication.isPlaying)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
-        {
-            //Jogo compilado
-             Application.Quit();
-        }
+        //UnityEditor.EditorApplication.isPlaying = false;
+       
+    
+        //Jogo compilado
+        Application.Quit();
+        
     }
 
     public void StartGame()
