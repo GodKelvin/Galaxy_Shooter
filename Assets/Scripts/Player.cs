@@ -54,9 +54,18 @@ public class Player : MonoBehaviour
     private int _firstDamage = -1;
     private int _secondDamage = -1;
 
+    //[SerializeField]
+    private VolumeOptions _optionsManager;
+    private float _volumeEffectSound = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
+        _optionsManager = GameObject.Find("OptionsManager").GetComponent<VolumeOptions>();
+        if(_optionsManager)
+        {
+            _volumeEffectSound = _optionsManager.GetEffectVolume();
+        }
         PlayerSpawn();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
@@ -79,6 +88,7 @@ public class Player : MonoBehaviour
 
         //Ja estou dentro do player, entao so pego a fonte de audio que ele tem
         _audioSourceShoot = GetComponent<AudioSource>();
+        _audioSourceShoot.volume = _volumeEffectSound;
 
     }
 

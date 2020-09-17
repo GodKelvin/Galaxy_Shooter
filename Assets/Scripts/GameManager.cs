@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool gameOver = true;
+    //private float _volumeSoundEffect = 1f;
+
     //public GameObject player;
     //private UIManager _uiManager;
     //if game over is true

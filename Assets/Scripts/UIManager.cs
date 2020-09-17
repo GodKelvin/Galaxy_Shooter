@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //Acesso a todos os elementos de UI do editor do unity
@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     private GameManager _gameManager;
 
     public GameObject optionsPanel;
+    public GameObject howToPlayPanel;
 
     private void Start()
     {
@@ -108,14 +109,25 @@ public class UIManager : MonoBehaviour
         _gameManager.gameOver = false;
         score = 0;
         _scoreUntilLife = 0;
+        EnemyAI._speed = 4.5f;
     }
 
     public void ShowHowToPlay()
     {
-        optionsPanel.SetActive(true);
+        howToPlayPanel.SetActive(true);
     }
     
     public void CloseHowToPlay()
+    {
+        howToPlayPanel.SetActive(false);
+    }
+
+    public void ShowOptions()
+    {
+        optionsPanel.SetActive(true);
+    }
+
+    public void CloseOptions()
     {
         optionsPanel.SetActive(false);
     }

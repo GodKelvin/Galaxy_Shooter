@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField]
     //private float _speed = 4.5f;
+    //[SerializeField]
     public static float _speed = 4.5f;
     //public static float publicSpeed = 4.5f;
 

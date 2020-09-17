@@ -9,10 +9,11 @@ public class ExplosionEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Destrua esse objeto depois de 4s
         _audioSourceExplosion = GetComponent<AudioSource>();
         _audioSourceExplosion.volume = 0.5f;
         _audioSourceExplosion.Play();
+
+        //Destrua esse objeto depois de 4s
         Destroy(this.gameObject, 4f);
     }
 
