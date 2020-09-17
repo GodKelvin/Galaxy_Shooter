@@ -14,9 +14,14 @@ public class PowerUp : MonoBehaviour
     //Utilizamos um clip para armazenar o audio, caso contrario, o audio seria destruido com o objeto
     [SerializeField]
     private AudioClip _clipSoundPowerUp = null;
+
+    private VolumeOptions _optionsManager;
+    private float _volumeEffect = 1f;
    
    void Start()
    {
+       _optionsManager = GameObject.Find("OptionsManager").GetComponent<VolumeOptions>();
+       _volumeEffect = _optionsManager.GetEffectVolume();
        //_audioSourcePowerUp = GetComponent<AudioSource>();
        PowerUpSpawn();
    }
@@ -60,8 +65,8 @@ public class PowerUp : MonoBehaviour
                 }
             }
             //destroy this powerup
-            //_audioSourcePowerUp.Play();
-            AudioSource.PlayClipAtPoint(_clipSoundPowerUp, Camera.main.transform.position, 0.5f);
+            //O que vai tocar, posicao na tela, volume
+            AudioSource.PlayClipAtPoint(_clipSoundPowerUp, Camera.main.transform.position, _volumeEffect);
             Destroy(this.gameObject);
         }
     }

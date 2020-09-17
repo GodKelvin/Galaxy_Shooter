@@ -8,32 +8,15 @@ public class VolumeOptions : MonoBehaviour
     [SerializeField]
     private float _musicVolume = 1f;
 
+    [SerializeField]
     private float _effectVolume = 1f;
-    // Start is called before the first frame update
-    private MainCamera _mainCam;
-    void Start()
-    {
-        //_audioSrc = GameObject.Find("MainCamera").GetComponent<AudioSource>();
-        
-    }
+
+    [SerializeField]
+    private AudioClip _clipSoundPowerUp = null;
     
-
-    // Update is called once per frame
-    void Update()
-    {
-        //_audioSrc.volume = _musicVolume;
-    }
-
     public void SetMusicVolume(float vol)
     {
         _musicVolume = vol;
-        
-        /*_mainCam = GameObject.Find("Main Camera").GetComponent<MainCamera>();
-        if(_mainCam)
-        {
-            _mainCam.SetMusicVolume(vol);
-        }*/
-        
     }
 
     public void SetEffectVolume(float vol)
@@ -48,7 +31,11 @@ public class VolumeOptions : MonoBehaviour
 
     public float GetMusicVolume()
     {
-        //Debug.Log("OPA1");
         return _musicVolume;
+    }
+
+    public void TesteSoundEffect()
+    {
+        AudioSource.PlayClipAtPoint(_clipSoundPowerUp, Camera.main.transform.position, _effectVolume);
     }
 }

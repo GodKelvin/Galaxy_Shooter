@@ -6,13 +6,20 @@ public class ExplosionEffect : MonoBehaviour
 {
     private AudioSource _audioSourceExplosion = null;
     private float _speed = 4.5f;
+    
+    private VolumeOptions _optionsManager;
+    private float _volumeEffect = 1f;
+    private AudioSource _audioSrc;
+
     // Start is called before the first frame update
     void Start()
     {
+        _optionsManager = GameObject.Find("OptionsManager").GetComponent<VolumeOptions>();
+        _volumeEffect = _optionsManager.GetEffectVolume();
+        
         _audioSourceExplosion = GetComponent<AudioSource>();
-        _audioSourceExplosion.volume = 0.5f;
+        _audioSourceExplosion.volume = _volumeEffect;
         _audioSourceExplosion.Play();
-
         //Destrua esse objeto depois de 4s
         Destroy(this.gameObject, 4f);
     }

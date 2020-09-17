@@ -35,9 +35,14 @@ public class UIManager : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject howToPlayPanel;
 
-    private void Start()
+    private VolumeOptions _optionsManager;
+    private float _volumeEffect = 1f;
+
+    void Start()
     {
+        _optionsManager = GameObject.Find("OptionsManager").GetComponent<VolumeOptions>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
     }
 
     public void UpdateLives(int currentPlayerLives)
@@ -51,7 +56,7 @@ public class UIManager : MonoBehaviour
         score += 10;
         scoreText.text = "SCORE: " + score;
         _scoreUntilLife += 10;
-
+        
 
         if(_scoreUntilLife >= _scoreForLife)
         {
@@ -63,16 +68,19 @@ public class UIManager : MonoBehaviour
 
             if(_player)
             {
+                _volumeEffect = _optionsManager.GetEffectVolume();
                 if(_player.GetLifes() < 3)
                 {
-                    AudioSource.PlayClipAtPoint(_clipSoundGainLife, Camera.main.transform.position, 1f);
+                    //O que vai tocar, posicao na tela, volume
+                    AudioSource.PlayClipAtPoint(_clipSoundGainLife, Camera.main.transform.position, _volumeEffect);
                     _player.RemoveDamage();
                 }
                 else
                 {
                     score += _scoreBonus;
                     scoreText.text = "SCORE: " + score;
-                    AudioSource.PlayClipAtPoint(_clipSoundGainPoints, Camera.main.transform.position, 1f);
+                    //O que vai tocar, posicao na tela, volume
+                    AudioSource.PlayClipAtPoint(_clipSoundGainPoints, Camera.main.transform.position, _volumeEffect);
                 }
                
             }

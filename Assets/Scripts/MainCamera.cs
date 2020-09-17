@@ -8,12 +8,13 @@ public class MainCamera : MonoBehaviour
     private float _musicVolume = 1f;
 
     private VolumeOptions _optionsManager;
-    private float _volumeEffectSound = 1f;
+    private float _volumeMusic = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         _optionsManager = GameObject.Find("OptionsManager").GetComponent<VolumeOptions>();
+        //Pegando o audio desse componente(camera)
         _audioSrc = GetComponent<AudioSource>();
     }
 
@@ -21,8 +22,8 @@ public class MainCamera : MonoBehaviour
     void Update()
     {
         //_audioSrc.volume = _musicVolume;
-        _volumeEffectSound = _optionsManager.GetMusicVolume();
-        _audioSrc.volume = _volumeEffectSound;
+        _volumeMusic = _optionsManager.GetMusicVolume();
+        _audioSrc.volume = _volumeMusic;
         //Debug.Log(_volumeEffectSound);
     }
 
