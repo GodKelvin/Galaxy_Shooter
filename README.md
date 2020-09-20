@@ -12,7 +12,8 @@ Acesse: https://druiguingames.itch.io/galaxy-shooter-complete-edition
   - Sistema de pontuação bônus
   - Diferentes fontes para cada situação (menu, score)
   - Novos efeitos sonoros (para recuperação de vida e bônus)
-
+## GamePlay
+![Gameplay Gif Galaxy Shooter](https://github.com/GodKelvin/Galaxy_Shooter/blob/master/Arquivos_Readme/gameplay.gif)
 ## Capturas de tela
 ### Menu Principal
 <img src="https://github.com/GodKelvin/Galaxy_Shooter/blob/master/Arquivos_Readme/menu_principal.png">
