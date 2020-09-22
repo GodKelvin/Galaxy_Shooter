@@ -48,11 +48,22 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator PowerUpSpawnRoutine()
     {
+        //Comeco em 17 pra demorar 5s ate o primeiro powerUp
+        float timeToSpawn = 17;
+        
         while(!_gameManager.gameOver)
         {
-            int selectPowerUp = Random.Range(0,3);
-            Instantiate(_powerUpsVector[selectPowerUp], transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(_timeSpawnPowerUp);
+            //Incremento o tempo ate que o tempo de spawn seja atingido
+            timeToSpawn += Time.deltaTime;
+            if(timeToSpawn > _timeSpawnPowerUp)
+            {
+                //Debug.Log("OPA: " + Time.time);
+                timeToSpawn = 0;
+                int selectPowerUp = Random.Range(0,3);
+                Instantiate(_powerUpsVector[selectPowerUp], transform.position, Quaternion.identity);
+               
+            }
+             yield return null;
         }   
     }
 }

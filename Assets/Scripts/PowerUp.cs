@@ -17,14 +17,17 @@ public class PowerUp : MonoBehaviour
 
     private VolumeOptions _optionsManager;
     private float _volumeEffect = 1f;
-   
-   void Start()
-   {
-       _optionsManager = GameObject.Find("OptionsManager").GetComponent<VolumeOptions>();
-       _volumeEffect = _optionsManager.GetEffectVolume();
-       //_audioSourcePowerUp = GetComponent<AudioSource>();
-       PowerUpSpawn();
-   }
+
+    private GameManager _gameManager;
+
+    void Start()
+    {
+        _optionsManager = GameObject.Find("OptionsManager").GetComponent<VolumeOptions>();
+        _volumeEffect = _optionsManager.GetEffectVolume();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //_audioSourcePowerUp = GetComponent<AudioSource>();
+        PowerUpSpawn();
+    }
 
 
     // Update is called once per frame

@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(Time.time);
         _volumeEffect = _optionsManager.GetEffectVolume();
         _audioSrc.volume = _volumeEffect;
         Player_movement();
