@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         _audioSrc.volume = _volumeEffect;
         Player_movement();
                                           //Left click mouse(0)
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
+        if(Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
             Shoot();
         }
