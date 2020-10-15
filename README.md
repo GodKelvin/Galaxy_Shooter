@@ -1,5 +1,6 @@
 # Galaxy Shooter
-Jogo em 2d desenvolvido durante um curso do motor Unity, tendo inspiração jogos shooter no estilo arcade.
+Jogo em 2d desenvolvido durante um curso do motor Unity, tendo inspiração jogos shooter no estilo arcade.<br>
+**Desenvolvimento com foco em programação e adição de funcionalidades.**
 
 ## Para jogar
 Acesse: https://druiguingames.itch.io/galaxy-shooter-complete-edition
@@ -30,4 +31,6 @@ Acesse: https://druiguingames.itch.io/galaxy-shooter-complete-edition
 <img src="https://github.com/GodKelvin/Galaxy_Shooter/blob/master/Arquivos_Readme/how_to_play.png">
 
 ## Observações
-Todos os sprites foram disponibilizados durante o curso citado.
+Todos os sprites foram disponibilizados durante o curso citado.<br>
+Sons disponibilizados através do site: https://opengameart.org/
+
