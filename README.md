@@ -3,7 +3,7 @@ Jogo em 2d desenvolvido durante um curso do motor Unity, tendo inspiração jogo
 **Desenvolvimento com foco em programação e adição de funcionalidades.**
 
 ## Para jogar
-Acesse: https://godkelvin.itch.io/galaxy-shooter-complete-edition
+Acesse: https://godkelvin.itch.io/galaxy-shooter
 
 ## Indo além do curso
 ### Foram adicionados:
